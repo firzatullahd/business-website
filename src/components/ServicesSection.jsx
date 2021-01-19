@@ -1,5 +1,4 @@
-// eslint-disable-next-line
-import react from "react";
+import React from "react";
 import home2 from "../img/home2.png";
 import clock from "../img/clock.svg";
 import diaphragm from "../img/diaphragm.svg";
