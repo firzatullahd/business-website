@@ -1,12 +1,15 @@
+// eslint-disable-next-line
 import react, {Fragment} from 'react';
 import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServicesSection';
+import FaqSection from '../components/FaqSection';
 
 const AboutUs =() => {
     return(
         <Fragment>
             <AboutSection />
             <ServicesSection />
+            <FaqSection />
         </Fragment>
     );
 }
