@@ -1,42 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import athlete from "../img/athlete-small.png";
-import theracer from "../img/theracer-small.png";
-import goodtimes from "../img/goodtimes-small.png";
+import { motion } from "framer-motion";
+import { MovieState } from "../util/movieState";
+import { pageAnimation } from "../util/animation";
 
 const OurWork = () => {
+  // eslint-disable-next-line
+  const [movies, setMovies] = useState(MovieState);
   return (
-    <StyledWork>
-      <StyledMovie>
-        <h2>The Athlete</h2>
-        <div className="line"></div>
-        <Link to="/work/the-athlete">
-          <img src={athlete} alt="athlete" />
-        </Link>
-      </StyledMovie>
-      <StyledMovie>
-        <h2>The Racer</h2>
-        <div className="line"></div>
-        <Link to="/work/the-racer">
-          <img src={theracer} alt="the racer" />
-        </Link>
-      </StyledMovie>
-      <StyledMovie>
-        <h2>Good Times</h2>
-        <div className="line"></div>
-        <Link to="/work/good-times">
-          <img src={goodtimes} alt="good times" />
-        </Link>
-      </StyledMovie>
+    <StyledWork
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      {movies.map((movie) => (
+        <StyledMovie>
+          <h2>{movie.title}</h2>
+          <div className="line"></div>
+          <Link to={movie.url}>
+            <img src={movie.mainImg} alt={movie.title} />
+          </Link>
+        </StyledMovie>
+      ))}
     </StyledWork>
   );
 };
 
-const StyledWork = styled.div`
+const StyledWork = styled(motion.div)`
   min-height: 100vh;
   overflow: hidden;
   padding: 5rem 8rem;
+  color: white;
   h2 {
     padding: 1rem 0rem;
   }

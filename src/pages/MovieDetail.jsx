@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { MovieState } from "../movieState";
+import { MovieState } from "../util/movieState";
 
 const MovieDetail = () => {
   const history = useHistory();
