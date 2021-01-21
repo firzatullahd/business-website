@@ -1,15 +1,12 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { MovieState } from "../util/movieState";
 import { motion } from "framer-motion";
 import { pageAnimation, fade, photoAnimation } from "../util/animation";
 
-const MovieDetail = () => {
+const MovieDetail = ({ movies }) => {
   const history = useHistory();
   const url = history.location.pathname;
-  // eslint-disable-next-line
-  const [movies, setMovies] = useState(MovieState);
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {

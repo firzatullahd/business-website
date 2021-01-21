@@ -1,7 +1,7 @@
 export const pageAnimation = {
     hidden: {
         opacity: 0,
-        y: 300
+        y: -300
     },
     show: {
         opacity: 1,
@@ -14,9 +14,9 @@ export const pageAnimation = {
     },
     exit: {
         opacity: 0,
-        y: 300,
+        y: 0,
         transition: {
-            duration: 0.5
+            duration: 2
         }
     }
 }
@@ -48,8 +48,8 @@ export const fade = {
 }
 
 export const photoAnimation = {
-    hidden: { opacity: 0, scale: 1.5 },
-    show: { opacity: 1, scale: 1, transition: { duration: 0.75, ease: "easeOut" } }
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 2, ease: "easeOut" } }
 }
 
 export const lineAnimation = {
@@ -58,6 +58,6 @@ export const lineAnimation = {
 }
 
 export const slider = {
-    hidden: { x: '-130%', skew: '45deg' },
-    show: { x: '100%', skew: '0deg', transition: { duration: 1, ease: "easeOut" } }
+    hidden: { x: '-130%' },
+    show: { x: '100%', transition: { duration: 0.75, ease: "easeOut" } }
 }

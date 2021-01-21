@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MovieState } from "../util/movieState";
 import {
   pageAnimation,
   fade,
@@ -12,9 +11,7 @@ import {
 } from "../util/animation";
 import ScrollTop from "../components/ScrollTop";
 
-const OurWork = () => {
-  // eslint-disable-next-line
-  const [movies, setMovies] = useState(MovieState);
+const OurWork = ({ movies }) => {
   return (
     <StyledWork
       variants={pageAnimation}
@@ -47,11 +44,9 @@ const OurWork = () => {
 };
 
 const StyledWork = styled(motion.div)`
-  background: #fff;
   min-height: 100vh;
   overflow: hidden;
   padding: 5rem 8rem;
-  color: black;
   z-index: 1;
   h2 {
     padding: 1rem 0rem;

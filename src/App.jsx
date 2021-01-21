@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { createGlobalStyle } from "styled-components";
@@ -7,27 +7,29 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import OurWork from "./pages/OurWork";
 import MovieDetail from "./pages/MovieDetail";
+import { MovieState } from "./util/movieState";
 
 function App() {
   const location = useLocation();
+  // eslint-disable-next-line
+  const [movies, setMovies] = useState(MovieState);
   return (
     <div className="App">
       <GlobalStyle />
       <Nav />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.key}>
-          <Route path="/" exact>
-            <AboutUs />
-          </Route>
-          <Route path="/work" exact>
-            <OurWork />
-          </Route>
-          <Route path="/contact">
-            <ContactUs />
-          </Route>
-          <Route path="/work/:id">
-            <MovieDetail />
-          </Route>
+          <Route path="/" exact component={AboutUs} />
+          <Route
+            path="/work"
+            exact
+            render={(props) => <OurWork {...props} movies={movies} />}
+          />
+          <Route path="/contact" component={ContactUs} />
+          <Route
+            path="/work/:id"
+            render={(props) => <MovieDetail {...props} movies={movies} />}
+          />
         </Switch>
       </AnimatePresence>
     </div>
