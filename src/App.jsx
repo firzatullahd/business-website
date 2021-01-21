@@ -10,7 +10,6 @@ import MovieDetail from "./pages/MovieDetail";
 
 function App() {
   const location = useLocation();
-  console.log(location);
   return (
     <div className="App">
       <GlobalStyle />
@@ -23,11 +22,11 @@ function App() {
           <Route path="/work" exact>
             <OurWork />
           </Route>
-          <Route path="/work/:id">
-            <MovieDetail />
-          </Route>
           <Route path="/contact">
             <ContactUs />
+          </Route>
+          <Route path="/work/:id">
+            <MovieDetail />
           </Route>
         </Switch>
       </AnimatePresence>
@@ -41,8 +40,24 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
       box-sizing:border-box; 
   }
+  html {
+    @media (max-width : 768px) {
+      font-size:55%;
+      p {
+        font-size:180%;
+      }
+    }
+    @media (max-width : 450px) {
+      font-size:40%;
+      p {
+        font-size:180%;
+      }
+    }
+  }
+
   body{
-    background: #1b1b1b;
+    overflow-x:hidden;
+    background: #111111;
     font-family: 'Inter', sans-serif;
     color: white;
   }

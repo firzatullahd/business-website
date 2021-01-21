@@ -5,10 +5,19 @@ import clock from "../img/clock.svg";
 import diaphragm from "../img/diaphragm.svg";
 import teamwork from "../img/teamwork.svg";
 import money from "../img/money.svg";
+import { motion } from "framer-motion";
+import { fade } from "../util/animation";
+import useScroll from "../util/useScroll";
 
 const ServicesSection = () => {
+  const [element, controls] = useScroll();
   return (
-    <StyledServices>
+    <StyledServices
+      variants={fade}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <StyledDescription>
         <h2>
           High <span>quality</span> services.
@@ -51,7 +60,7 @@ const ServicesSection = () => {
   );
 };
 
-const StyledServices = styled.div`
+const StyledServices = styled(motion.div)`
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -64,6 +73,10 @@ const StyledServices = styled.div`
   p {
     width: 70%;
     padding: 2rem 0rem 4rem 0rem;
+  }
+  @media (max-width: 768px) {
+    display: block;
+    justify-content: center;
   }
 `;
 
@@ -82,12 +95,19 @@ const StyledImage = styled.div`
     width: 100%;
     height: 80vh;
     object-fit: cover;
+    @media (max-width: 560px) {
+      height: 50vh;
+    }
   }
 `;
 
 const StyledCards = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  @media (max-width: 560px) {
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    justify-content: center;
+  }
 `;
 const StyledCard = styled.div`
   flex-basis: 20rem;

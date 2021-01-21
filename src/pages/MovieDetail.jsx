@@ -2,6 +2,8 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { MovieState } from "../util/movieState";
+import { motion } from "framer-motion";
+import { pageAnimation, fade, photoAnimation } from "../util/animation";
 
 const MovieDetail = () => {
   const history = useHistory();
@@ -18,14 +20,23 @@ const MovieDetail = () => {
   return (
     <Fragment>
       {movie && (
-        <StyledDetails>
+        <StyledDetails
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
           <StyledHeadline>
-            <h2>{movie.title}</h2>
-            <img src={movie.mainImg} alt={movie.title} />
+            <motion.h2 variants={fade}>{movie.title}</motion.h2>
+            <motion.img
+              variants={photoAnimation}
+              src={movie.mainImg}
+              alt={movie.title}
+            />
           </StyledHeadline>
           <StyledAwards>
             {movie.awards.map((award) => (
-              <StyledAward key={award.title}>
+              <StyledAward variants={fade} key={award.title}>
                 <h3>{award.title}</h3>
                 <div className="line"></div>
                 <p>{award.description}</p>
@@ -41,7 +52,7 @@ const MovieDetail = () => {
   );
 };
 
-const StyledDetails = styled.div`
+const StyledDetails = styled(motion.div)`
   color: white;
 `;
 const StyledHeadline = styled.div`
@@ -61,12 +72,16 @@ const StyledHeadline = styled.div`
   }
 `;
 
-const StyledAwards = styled.div`
+const StyledAwards = styled(motion.div)`
   min-height: 80vh;
   display: flex;
   margin: 5rem 8rem;
   align-items: center;
   justify-content: space-around;
+  @media (max-width: 560px) {
+    flex-direction: column;
+    margin: 2rem 2rem;
+  }
 `;
 const StyledAward = styled.div`
   padding: 3rem;

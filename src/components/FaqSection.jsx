@@ -1,60 +1,66 @@
 import React from "react";
 import styled from "styled-components";
+import { AnimateSharedLayout } from "framer-motion";
+import Toggle from "./Toggle";
+import { motion } from "framer-motion";
+import { fade } from "../util/animation";
+import useScroll from "../util/useScroll";
 
 const FaqSection = () => {
+  const [element, controls] = useScroll();
   return (
-    <StyledFaq>
+    <StyledFaq
+      variants={fade}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <h2>
         Any Questions <span>FAQ</span>
       </h2>
-      <div className="question">
-        <h4>How Do I Start?</h4>
-        <div className="answer">
-          <p>Lorem ipsum dolor sit amet.</p>
+      <AnimateSharedLayout>
+        <Toggle title="How Do i Start?">
+          <p>Lorem ipsum dolor sit.</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-            nostrum!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
+            maxime repudiandae! Recusandae dolorum reiciendis ad doloribus
+            quaerat odio, inventore molestias.
           </p>
-        </div>
-        <div className="faq-line"></div>
-      </div>
-      <div className="question">
-        <h4>Daily Schedule</h4>
-        <div className="answer">
-          <p>Lorem ipsum dolor sit amet.</p>
+        </Toggle>
+        <Toggle title="Daily Schedule">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-            nostrum!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Asperiores, distinctio! Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Consectetur, consequatur!
           </p>
-        </div>
-        <div className="faq-line"></div>
-      </div>
-      <div className="question">
-        <h4>Different Payment Methods</h4>
-        <div className="answer">
-          <p>Lorem ipsum dolor sit amet.</p>
+        </Toggle>
+        <Toggle title="Different Payment Methods">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-            nostrum!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat
+            dolore nobis, nemo consectetur eligendi doloribus quia enim aliquam
+            adipisci quisquam repudiandae expedita molestiae. Vero mollitia cum
+            natus architecto unde qui?
           </p>
-        </div>
-      </div>
-      <div className="question">
-        <h4>What Products Do We Offer</h4>
-        <div className="answer">
-          <p>Lorem ipsum dolor sit amet.</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-            nostrum!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore,
+            omnis.
           </p>
-        </div>
-        <div className="faq-line"></div>
-      </div>
+        </Toggle>
+        <Toggle title="What Products Do We Offer">
+          <p>Lorem, ipsum.</p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Voluptatibus corrupti cupiditate necessitatibus facilis nam
+            praesentium.
+          </p>
+        </Toggle>
+      </AnimateSharedLayout>
     </StyledFaq>
   );
 };
 
-const StyledFaq = styled.div`
+const StyledFaq = styled(motion.div)`
   min-height: 90vh;
   align-items: center;
   justify-content: space-between;
