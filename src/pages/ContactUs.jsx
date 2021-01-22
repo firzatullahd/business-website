@@ -43,10 +43,12 @@ const ContactUs = () => {
 };
 
 const StyledContacts = styled(motion.div)`
+  background: white;
+  color: black;
   padding: 5rem 8rem;
   min-height: 90vh;
   h2 {
-    color: white;
+    color: black;
   }
   @media (max-width: 560px) {
     padding: 3rem 2rem;
@@ -66,8 +68,7 @@ const StyledCircle = styled.div`
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
-  /* background: #353535; */
-  background: white;
+  background: #353535;
 `;
 
 const StyledContact = styled(motion.div)`
